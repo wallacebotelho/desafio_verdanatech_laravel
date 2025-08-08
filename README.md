@@ -13,13 +13,13 @@ php artisan ui bootstrap --auth
 npm install && npm run dev
 
 5º Criar o banco de dados no MYSQL Workbench
-CREATE DATABASE chamados;
+CREATE DATABASE desafio_verdanatech;
 
 6º Editar o arquivo .env para configuração do banco de dados MYSQL
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=chamados
+DB_DATABASE=desafio_verdanatech
 DB_USERNAME=root
 DB_PASSWORD=11052017
 
@@ -68,6 +68,21 @@ CONSTRAINT `tickets_assignee_id_foreign` FOREIGN KEY (`assignee_id`) REFERENCES 
 16º Criado a seeder UsuarioFake para popular o banco com o factory com 20 linhas
 
 16º Criado a seeder ticket para popular o banco com o factory com 200 linhas
+
+17º Criado a view index.blade.php e passado os parametros no controller.
+
+18º Criado atributo para de status e prioridade no TicketController, para ser passado o parâmetro para a view de Criação.
+
+19º Passado a rota no formulário de criação (tickets.store), o método POST e o CSRF Token para segurança.
+
+20º Criado a view de criação de tickets, com os campos de título, descrição, status, prioridade e responsável.
+
+21º Criado a validação no controller TicketController, para os campos de título, descrição, status, prioridade e responsável.
+
+22º Adicionado o tratamento de erros de validação na view de criação, para exibir mensagens de erro caso os campos não sejam preenchidos corretamente.
+
+23º Adicionado o método assign no controller TicketController, para atribuir um ticket a um usuário específico. (Pendente de implementação na view)
+
 
 
 

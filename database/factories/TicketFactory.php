@@ -19,11 +19,11 @@ class TicketFactory extends Factory
         return [
             'title' => $this->faker->sentence(),
             'description' => $this->faker->paragraph(),
-            'status' => $this->faker->randomElement(['aberto', 'em_andamento', 'fechado']),
-            'priority' => $this->faker->randomElement(['baixo', 'médio', 'alto']),
+            'status' => $this->faker->randomElement(['aberto', 'em andamento']),
+            'priority' => $this->faker->randomElement(['baixo', 'médio', 'alto', 'urgente']),
             'created_at' => $this->faker->dateTimeBetween('-1 year', 'now'),
             'updated_at' => $this->faker->dateTimeBetween('-1 year', 'now'),
-            'user_id' => $this->faker->numberBetween(1, 23),
+            'user_id' => $this->faker->numberBetween(2, 21),
         ];
     }
 }

@@ -12,4 +12,6 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::post('/tickets/assign/{ticket}', [TicketController::class, 'assign'])->name('tickets.assign');
+
 Route::resource('tickets', TicketController::class);

@@ -53,7 +53,7 @@
                                             <td>{{ $ticket->id }}</td>
                                             <td>{{ $ticket->title }}</td>
                                             <td>{{ $ticket->user->name }}</td>
-                                            <td>{{ $ticket->status }}</td>
+                                            <td>{{ ucfirst($ticket->status) }}</td>
                                             <td>{{ $ticket->assignee ? $ticket->assignee->name : '-' }}</td>
                                             <td>{{ $ticket->created_at->format('d/m/Y H:i') }}</td>
                                             <td>{{ $ticket->updated_at->format('d/m/Y H:i') }}</td>

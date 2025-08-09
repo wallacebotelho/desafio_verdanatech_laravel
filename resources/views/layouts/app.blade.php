@@ -44,9 +44,6 @@
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('tickets.create') }}">{{ __('Criar') }}</a>
                                     <a class="dropdown-item" href="{{ route('tickets.index') }}">{{ __('Visualizar') }}</a>
-
-                                    <a class="dropdown-item"
-                                        href="{{ route('tickets.index') }}">{{ __('View Chamados') }}</a>
                                 </div>
                             </li>
                         </ul>

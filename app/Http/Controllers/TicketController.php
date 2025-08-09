@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ticket;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class TicketController extends Controller
@@ -15,11 +16,12 @@ class TicketController extends Controller
     ];
 
     protected $priorities = [
-        'Baixo',
-        'Média',
-        'Alta',
-        'Urgente'
+        'baixo' => 'Baixo',
+        'medio' => 'Médio',
+        'alto' => 'Alto',
+        'urgente' => 'Urgente'
     ];
+
 
     public function __construct()
     {
@@ -63,24 +65,11 @@ class TicketController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, Ticket $ticket)
     {
-        $rules = [
-            'title' => 'required|string|max:50',
-            'description' => 'required|string',
-            'status' => 'required|in:' . implode(',', $this->status),
-            'priority' => 'required|in:' . implode(',', $this->priorities),
-        ];
 
-        $messages = [
-            'title.required' => 'O título é obrigatório.',
-            'title.max' => 'O título deve ter no máximo :max caracteres.',
-            'description.required' => 'A descrição é obrigatória.',
-            'status.required' => 'O status é obrigatório.',
-            'status.in' => 'O status selecionado é inválido.',
-            'priority.required' => 'A prioridade é obrigatória.',
-            'priority.in' => 'A prioridade selecionada é inválida.',
-        ];
+        $rules = $ticket->rules();
+        $messages = $ticket->messages();
 
         $request->validate($rules, $messages);
 
@@ -96,9 +85,9 @@ class TicketController extends Controller
      */
     public function show(Ticket $ticket)
     {
+        $users = User::all();
 
-
-        return view('tickets.show', compact('ticket'));
+        return view('tickets.show', compact('ticket', 'users'));
     }
 
     /**
@@ -106,7 +95,11 @@ class TicketController extends Controller
      */
     public function edit(Ticket $ticket)
     {
-        //
+        return view('tickets.edit', [
+            'ticket' => $ticket,
+            'status' => $this->status,
+            'priorities' => $this->priorities
+        ]);
     }
 
     /**
@@ -114,7 +107,14 @@ class TicketController extends Controller
      */
     public function update(Request $request, Ticket $ticket)
     {
-        //
+        $rules = $ticket->rules();
+        $messages = $ticket->messages();
+
+        $request->validate($rules, $messages);
+
+        $ticket->update($request->all());
+
+        return redirect()->route('tickets.index')->with('success', 'Chamado atualizado com sucesso!');
     }
 
     /**
@@ -122,19 +122,34 @@ class TicketController extends Controller
      */
     public function destroy(Ticket $ticket)
     {
-        //
+        $ticket->delete();
+
+        return redirect()->route('tickets.index')->with('success', 'Chamado excluído com sucesso!');
     }
 
     /** Attribution for assigneed */
     public function assign(Request $request, Ticket $ticket)
     {
         $request->validate([
-            'assignee_id' => 'required|exists:users,id',
+            'assignee_id' => 'exists:users,id',
         ], [
-            'assignee_id.required' => 'O responsável é obrigatório.',
             'assignee_id.exists' => 'O responsável selecionado é inválido.',
         ]);
 
-        dd($request->all());
+        $ticket->assignee_id = auth()->id();
+        $ticket->status = 'Em Andamento';
+        $ticket->save();
+
+        return redirect()->route('tickets.show', $ticket->id)->with('success', 'Chamado atribuído com sucesso!');
+    }
+
+    /** Respond to a ticket */
+    public function respond(Request $request, Ticket $ticket)
+    {
+
+        $ticket->response = $request->input('response');
+        $ticket->save();
+
+        return redirect()->route('tickets.show', $ticket->id)->with('success', 'Resposta enviada com sucesso!');
     }
 }

@@ -19,8 +19,8 @@ class TicketFactory extends Factory
         return [
             'title' => $this->faker->sentence(),
             'description' => $this->faker->paragraph(),
-            'status' => $this->faker->randomElement(['aberto', 'em andamento']),
-            'priority' => $this->faker->randomElement(['baixo', 'médio', 'alto', 'urgente']),
+            'status' => $this->faker->randomElement(['Aberto', 'Em Andamento']),
+            'priority' => $this->faker->randomElement(['Baixo', 'Médio', 'Alto', 'Urgente']),
             'created_at' => $this->faker->dateTimeBetween('-1 year', 'now'),
             'updated_at' => $this->faker->dateTimeBetween('-1 year', 'now'),
             'user_id' => $this->faker->numberBetween(2, 21),

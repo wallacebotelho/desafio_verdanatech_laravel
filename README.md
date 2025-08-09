@@ -81,12 +81,20 @@ CONSTRAINT `tickets_assignee_id_foreign` FOREIGN KEY (`assignee_id`) REFERENCES 
 
 22º Adicionado o tratamento de erros de validação na view de criação, para exibir mensagens de erro caso os campos não sejam preenchidos corretamente.
 
-23º Adicionado o método assign no controller TicketController, para atribuir um ticket a um usuário específico. (Pendente de implementação na view)
+23º Adicionado o método assign no controller TicketController, para atribuir um ticket a um usuário específico. (Concluido)
 
+24º Criado a view show.blade.php para exibir os detalhes de um ticket específico.
 
+25º Adicionado o campo de resposta na tabela tickets e atualizado a view show.blade.php para exibir o campo de resposta com um collapse.
 
+26º Criando a migration para adicionar o campo de resposta na tabela tickets.
 
+27º Atualizando a view show.blade.php para exibir o campo de resposta.
 
+28º Criando a funcionalidade de resposta a um chamado no controller TicketController.
 
+29º Removendo as regras e mensagens do Controller TicketController e migrando as regras e mensagens para o Model Ticket.
 
-
+30º Importando e Configurando o Vue.Js no Laravel
+composer require laravel/ui
+php artisan ui vue

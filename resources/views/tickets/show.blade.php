@@ -82,7 +82,7 @@
                                 </a>
                             @endif
 
-                            <a href="{{ route('tickets.edit', $ticket->id) }}" class="btn btn-outline-primary">Editar</a>
+                            <a href="{{ route('tickets.edit', $ticket->id) }}" class="btn btn-outline-primary me-2">Editar</a>
                             <a href="{{ route('tickets.index') }}" class="btn btn-secondary">Voltar</a>
                         </div>
                     </div>

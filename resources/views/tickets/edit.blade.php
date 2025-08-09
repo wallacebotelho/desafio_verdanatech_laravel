@@ -30,6 +30,18 @@
                             </div>
 
                             <div class="form-group">
+                                <label for="assignee">Atribuir a:</label>
+                                <select name="assignee_id" class="form-control" id="assignee">
+                                    <option value="">Selecione um responsável</option>
+                                    @foreach ($users as $user)
+                                        <option value="{{ $user->id }}"
+                                            {{ old('assignee_id', $ticket->assignee_id) == $user->id ? 'selected' : '' }}>
+                                            {{ $user->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="form-group">
                                 <label for="status">Status*</label>
                                 <select name="status" class="form-control" id="status">
                                     @foreach ($status as $key)
@@ -57,8 +69,8 @@
                                 @enderror
                             </div>
 
-                            <div class="form-group mt-3">
-                                <button type="submit" class="btn btn-primary">Salvar</button>
+                            <div class="form-group mt-4">
+                                <button type="submit" class="btn btn-primary me-2">Salvar</button>
                                 <a href="{{ route('tickets.index') }}" class="btn btn-secondary">Cancelar</a>
                             </div>
                         </form>

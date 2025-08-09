@@ -6,7 +6,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">Lista de chamados</div>
-                    <div class="d-flex justify-content-between mb-3">
+                    <div class="d-flex justify-content-between mb-3 mt-2 ms-2">
                         <div class="d-flex">
                             <form method="GET" action="{{ route('tickets.index') }}" class="d-flex me-2">
                                 <input type="text" class="form-control me-2" name="search"
@@ -15,6 +15,9 @@
                                     Buscar
                                 </button>
                             </form>
+                            <a href="{{ route('tickets.create') }}" class="btn btn-primary">
+                                Criar novo chamado
+                            </a>
                         </div>
                     </div>
 
@@ -34,6 +37,7 @@
 
                     <div class="card-body">
                         <div class="table-responsive">
+                            
                             <table class="table table-hover">
                                 <thead class="thead-dark">
                                     <tr>
@@ -59,7 +63,7 @@
                                             <td>{{ $ticket->updated_at->format('d/m/Y H:i') }}</td>
                                             <td>
                                                 <a href="{{ route('tickets.show', $ticket->id) }}"
-                                                    class="btn btn-info btn-sm">Ver</a>
+                                                    class="btn btn-info btn-sm me-1">Ver</a>
                                                 <a href="{{ route('tickets.edit', $ticket->id) }}"
                                                     class="btn btn-warning btn-sm">Editar</a>
                                                 <form method="POST" action="{{ route('tickets.destroy', $ticket->id) }}"

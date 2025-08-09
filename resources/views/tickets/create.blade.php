@@ -56,7 +56,7 @@
                             </div>
 
                             <div class="form-group mt-3">
-                                <button type="submit" class="btn btn-primary">Criar</button>
+                                <button type="submit" class="btn btn-primary me-2">Criar</button>
                                 <a href="{{ route('tickets.index') }}" class="btn btn-secondary">Cancelar</a>
                             </div>
                         </form>

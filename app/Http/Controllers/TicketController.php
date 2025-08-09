@@ -95,10 +95,13 @@ class TicketController extends Controller
      */
     public function edit(Ticket $ticket)
     {
+        $users = User::orderBy('name')->get();
+
         return view('tickets.edit', [
             'ticket' => $ticket,
             'status' => $this->status,
-            'priorities' => $this->priorities
+            'priorities' => $this->priorities,
+            'users' => $users
         ]);
     }
 

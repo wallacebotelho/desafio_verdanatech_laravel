@@ -150,6 +150,10 @@ class TicketController extends Controller
     public function respond(Request $request, Ticket $ticket)
     {
 
+        if(!$ticket->assignee_id) {
+            return redirect()->route('tickets.show', $ticket->id)->with('error', 'O chamado precisa ser atribuído a alguém.');
+        }
+
         $ticket->response = $request->input('response');
         $ticket->save();
 

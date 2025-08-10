@@ -11,8 +11,8 @@
                             <form method="GET" action="{{ route('tickets.index') }}" class="d-flex me-2">
                                 <input type="text" class="form-control me-2" name="search"
                                     placeholder="Digite o título ou descrição..." value="{{ request('search') }}">
-                                <button type="submit" class="btn btn-success">
-                                    Buscar
+                                <button title="Buscar" type="submit" class="btn btn-success">
+                                    <i class="bi bi-search"></i>
                                 </button>
                             </form>
                             <a href="{{ route('tickets.create') }}" class="btn btn-primary">
@@ -48,7 +48,7 @@
                                         <th scope="col">Atribuído para</th>
                                         <th scope="col">Criado em</th>
                                         <th scope="col">Atualizado em</th>
-                                        <th scope="col" style="width: 210px">Ações</th>
+                                        <th scope="col" style="width: 150px">Ações</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -63,15 +63,21 @@
                                             <td>{{ $ticket->updated_at->format('d/m/Y H:i') }}</td>
                                             <td>
                                                 <a href="{{ route('tickets.show', $ticket->id) }}"
-                                                    class="btn btn-info btn-sm me-1">Ver</a>
+                                                    class="btn btn-info btn-sm me-1" title="Visualizar">
+                                                    <i class="bi bi-eye"></i>
+                                                </a>
                                                 <a href="{{ route('tickets.edit', $ticket->id) }}"
-                                                    class="btn btn-warning btn-sm">Editar</a>
+                                                    class="btn btn-warning btn-sm" title="Editar">
+                                                    <i class="bi bi-pencil"></i>
+                                                </a>
                                                 <form method="POST" action="{{ route('tickets.destroy', $ticket->id) }}"
                                                     class="d-inline"
                                                     onsubmit="return confirm('Tem certeza que deseja excluir este chamado?');">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm">Excluir</button>
+                                                    <button type="submit" class="btn btn-danger btn-sm" title="Excluir">
+                                                        <i class="bi bi-trash"></i>
+                                                    </button>
                                                 </form>
                                             </td>
                                         </tr>

@@ -19,6 +19,13 @@
                             </div>
                         @endif
 
+                        @if (session('error'))
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                {{ session('error') }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        @endif
+
                         <div class="mb-3">
                             <div class="row">
                                 <div class="col-md-6 d-flex flex-column">
@@ -76,7 +83,7 @@
                                         </form>
                                     </div>
                                 </div>
-                                <a class="btn btn-info" data-bs-toggle="collapse" href="#collapseResponse" role="button"
+                                <a class="btn btn-info me-2" data-bs-toggle="collapse" href="#collapseResponse" role="button"
                                     aria-expanded="false" aria-controls="collapseResponse">
                                     Responder
                                 </a>

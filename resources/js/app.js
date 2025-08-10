@@ -16,7 +16,16 @@ import { createApp } from 'vue';
 const app = createApp({});
 
 import ExampleComponent from './components/ExampleComponent.vue';
+import HomeComponent from './components/Home.vue';
+import TableComponent from './components/Table.vue';
+import TicketComponent from './components/Tickets.vue';
+import CardComponent from './components/Card.vue';
+
 app.component('example-component', ExampleComponent);
+app.component('home-component', HomeComponent);
+app.component('table-component', TableComponent);
+app.component('ticket-component', TicketComponent);
+app.component('card-component', CardComponent);
 
 /**
  * The following block of code may be used to automatically register your

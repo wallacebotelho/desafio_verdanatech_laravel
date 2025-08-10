@@ -1,5 +1,10 @@
 # Desafio Verdanatech Laravel
 
+## Projeto: Sistema de Chamados
+### Descrição: Tecnologias utilizadas: Laravel 11, MySQL, Bootstrap, Vue.js, API RESTful com Sanctum.
+
+---
+
 ## 1. Criar o projeto Laravel 11
 ```bash
 composer create-project laravel/laravel chamados "11.*"
@@ -47,7 +52,7 @@ php artisan make:seed UsuarioSeeder
 **Obs:** Alternativa via SQL:
 ```sql
 INSERT INTO users (name, email, password)
-VALUES ("Wallace Botelho", 'wallacebotelho@msn.com', '12345678');
+VALUES ("João Maria", 'joaomaria@email.com', '12345678');
 ```
 
 ## 9. Executar seeder
@@ -128,3 +133,22 @@ composer require laravel/ui
 php artisan ui vue
 npm install && npm run dev
 ```
+---
+
+## 32. Criar Controller para API de tickets e Auth
+```bash
+php artisan make:controller Api/TicketController --api
+php artisan make:controller Api/AuthController --api
+```
+## 33. Instalando a API com o Artisan
+```bash
+php artisan install:api
+```
+---
+
+## 35. Configurar rotas de API para tickets com o Sanctum
+## 36. Criado rota de login através da API e configurado no `AuthController` e no Model `User`
+### Utilizar o método `createToken` do Laravel Sanctum para gerar tokens de autenticação, passar no model `User` o `HasApiTokens`
+
+---
+## 37. Adicionado o Bootstrap Icon no `layout`, para melhorar a usabilidade do usuário
